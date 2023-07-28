@@ -1,0 +1,1275 @@
+---
+kind: pipeline
+name: Assignment 1
+
+clone:
+  disable: true
+
+steps:
+- name: clone
+  image: localhost:5000/plugins/git-user
+
+- name: check
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/check.py
+  depends_on:
+  - clone
+
+- name: Check double include of header src/Tree.hpp
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A1_tree.py hpp
+  depends_on:
+  - check
+
+- name: Check existence of Tree
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A1_tree.py class
+  depends_on:
+  - check
+
+- name: Check existence of Tree::Node, and its members
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A1_tree.py node
+  depends_on:
+  - check
+
+- name: Check Tree::Node::prev
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A1_tree.py prev
+  depends_on:
+  - check
+
+- name: Check Tree::Node::next
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A1_tree.py next
+  depends_on:
+  - check
+
+- name: Check Tree being Regular
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A1_tree.py regular
+  depends_on:
+  - check
+
+- name: Check Tree::size
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A1_tree.py size
+  depends_on:
+  - check
+
+- name: Check Tree::empty
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A1_tree.py empty
+  depends_on:
+  - check
+
+- name: Check Tree::insert
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A1_tree.py insert
+  depends_on:
+  - check
+
+- name: Check Tree::find
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A1_tree.py find
+  depends_on:
+  - check
+
+- name: Check Tree::clear
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A1_tree.py clear
+  depends_on:
+  - check
+
+- name: Check Tree::front
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A1_tree.py front
+  depends_on:
+  - check
+
+- name: Check Tree::back
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A1_tree.py back
+  depends_on:
+  - check
+
+- name: Check Tree::begin
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A1_tree.py begin
+  depends_on:
+  - check
+
+- name: Check Tree::end
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A1_tree.py end
+  depends_on:
+  - check
+
+- name: Check empty
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A1_tree.py runEmpty
+  depends_on:
+  - check
+
+- name: Check insert
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A1_tree.py runInsert
+  depends_on:
+  - check
+
+- name: Check operator==
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A1_tree.py runEqual
+  depends_on:
+  - check
+
+- name: Check copy ctor
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A1_tree.py runCopy
+  depends_on:
+  - check
+
+- name: Check find
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A1_tree.py runFind
+  depends_on:
+  - check
+
+- name: Check clear
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A1_tree.py runClear
+  depends_on:
+  - check
+
+---
+kind: pipeline
+name: Assignment 2
+
+clone:
+  disable: true
+
+steps:
+- name: clone
+  image: localhost:5000/plugins/git-user
+
+- name: check
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/check.py
+  depends_on:
+  - clone
+
+- name: Check double include of header src/Tree.hpp
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py hpp
+  depends_on:
+  - check
+
+- name: Check existence of Tree
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py class
+  depends_on:
+  - check
+
+- name: Check existence of Tree:iterator and its basic properties
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py iterator
+  depends_on:
+  - check
+
+- name: Check that Tree::iterator is a forward iterator
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py iteratorF
+  depends_on:
+  - check
+
+- name: Check that Tree::iterator is a bidirectional iterator
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py iteratorBi
+  depends_on:
+  - check
+
+- name: Check that the iterator_traits of Tree:iterator are correc
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py iteratorTraits
+  depends_on:
+  - check
+
+- name: Check existence of Tree:const_iterator and its basic properties
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py constiterator
+  depends_on:
+  - check
+
+- name: Check that Tree::const_iterator is a forward iterator
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py constiteratorF
+  depends_on:
+  - check
+
+- name: Check that Tree::const_iterator is a bidirectional iterator
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py constiteratorBi
+  depends_on:
+  - check
+
+- name: Check that the iterator_traits of Tree:const_iterator are correct
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py constiteratorTraits
+  depends_on:
+  - check
+
+- name: Check that const_iterator is convertible to iterator
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py iteratorConversion
+  depends_on:
+  - check
+
+- name: Check Tree being Regular
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py regular
+  depends_on:
+  - check
+
+- name: Check Tree::size
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py size
+  depends_on:
+  - check
+
+- name: Check Tree::empty
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py empty
+  depends_on:
+  - check
+
+- name: Check Tree::insert
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py insert
+  depends_on:
+  - check
+
+- name: Check Tree::find
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py find
+  depends_on:
+  - check
+
+- name: Check Tree::clear
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py clear
+  depends_on:
+  - check
+
+- name: Check Tree::front
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py front
+  depends_on:
+  - check
+
+- name: Check Tree::back
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py back
+  depends_on:
+  - check
+
+- name: Check Tree::begin
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py begin
+  depends_on:
+  - check
+
+- name: Check Tree::end
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py end
+  depends_on:
+  - check
+
+- name: Check Tree::Tree(Comp comp)
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py compCtor
+  depends_on:
+  - check
+
+- name: Check empty
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py runEmpty
+  depends_on:
+  - check
+
+- name: Check insert
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py runInsert
+  depends_on:
+  - check
+
+- name: Check operator==
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py runEqual
+  depends_on:
+  - check
+
+- name: Check copy ctor
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py runCopy
+  depends_on:
+  - check
+
+- name: Check find
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py runFind
+  depends_on:
+  - check
+
+- name: Check clear
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py runClear
+  depends_on:
+  - check
+
+- name: Check insert, no default ctor
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py runInsertNoDefaultCtor
+  depends_on:
+  - check
+
+- name: Check insert, greater
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py runInsertGreater
+  depends_on:
+  - check
+
+- name: Check insert, not copyable key and value
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_A2_tree.py runInsertNotCopyable
+  depends_on:
+  - check
+
+---
+kind: pipeline
+name: Final, Task 1
+
+clone:
+  disable: true
+
+steps:
+- name: clone
+  image: localhost:5000/plugins/git-user
+
+- name: check
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/check.py
+  depends_on:
+  - clone
+
+- name: Check double include of header src/graph(traits.hpp
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py hpp_traits
+  depends_on:
+  - check
+
+- name: Check double include of header src/graph(tags.hpp
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py hpp_tags
+  depends_on:
+  - check
+
+- name: Check double include of header src/graph(adjacency_list.hpp
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py hpp_adjacency_list
+  depends_on:
+  - check
+
+- name: Check double include of header src/graph(concepts.hpp
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py hpp_concepts
+  depends_on:
+  - check
+
+- name: Check double include of header src/graph(properties.hpp
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py hpp_properties
+  depends_on:
+  - check
+
+- name: <Di, NoProp, NoProp> exists
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di--_Exist
+  depends_on:
+  - check
+
+- name: <Di, NoProp, NoProp> props default to NoProp
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di--_Same
+  depends_on:
+  - check
+
+- name: <Di, NoProp, NoProp> is DefaultInitializable
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di--_DefInit
+  depends_on:
+  - check
+
+- name: <Di, NoProp, NoProp> is Copyable
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di--_Copyable
+  depends_on:
+  - check
+
+- name: <Di, NoProp, NoProp> is a Graph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di--_Graph
+  depends_on:
+  - check
+
+- name: <Di, NoProp, NoProp> is a VertexListGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di--_VList
+  depends_on:
+  - check
+
+- name: <Di, NoProp, NoProp> VertexRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di--_VListBidi
+  depends_on:
+  - check
+
+- name: <Di, NoProp, NoProp> is an EdgeListGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di--_EList
+  depends_on:
+  - check
+
+- name: <Di, NoProp, NoProp> EdgeRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di--_EListBidi
+  depends_on:
+  - check
+
+- name: <Di, NoProp, NoProp> getIndex exists
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di--_getIndex
+  depends_on:
+  - check
+
+- name: <Di, NoProp, NoProp> is a MutableGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di--_Mutable
+  depends_on:
+  - check
+
+- name: <Di, NoProp, NoProp> is an IncidenceGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di--_Incidence
+  depends_on:
+  - check
+
+- name: <Di, NoProp, NoProp> OutEdgeRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di--_OEListBidi
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, NoProp> exists
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi--_Exist
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, NoProp> props default to NoProp
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi--_Same
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, NoProp> is DefaultInitializable
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi--_DefInit
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, NoProp> is Copyable
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi--_Copyable
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, NoProp> is a Graph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi--_Graph
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, NoProp> is a VertexListGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi--_VList
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, NoProp> VertexRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi--_VListBidi
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, NoProp> is an EdgeListGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi--_EList
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, NoProp> EdgeRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi--_EListBidi
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, NoProp> getIndex exists
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi--_getIndex
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, NoProp> is a MutableGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi--_Mutable
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, NoProp> is an IncidenceGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi--_Incidence
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, NoProp> OutEdgeRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi--_OEListBidi
+  depends_on:
+  - check
+
+- name: <Di, NoProp, int> exists
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di-I_Exist
+  depends_on:
+  - check
+
+- name: <Di, NoProp, int> is DefaultInitializable
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di-I_DefInit
+  depends_on:
+  - check
+
+- name: <Di, NoProp, int> is Copyable
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di-I_Copyable
+  depends_on:
+  - check
+
+- name: <Di, NoProp, int> is a Graph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di-I_Graph
+  depends_on:
+  - check
+
+- name: <Di, NoProp, int> is a VertexListGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di-I_VList
+  depends_on:
+  - check
+
+- name: <Di, NoProp, int> VertexRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di-I_VListBidi
+  depends_on:
+  - check
+
+- name: <Di, NoProp, int> is an EdgeListGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di-I_EList
+  depends_on:
+  - check
+
+- name: <Di, NoProp, int> EdgeRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di-I_EListBidi
+  depends_on:
+  - check
+
+- name: <Di, NoProp, int> getIndex exists
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di-I_getIndex
+  depends_on:
+  - check
+
+- name: <Di, NoProp, int> is a MutableGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di-I_Mutable
+  depends_on:
+  - check
+
+- name: <Di, NoProp, int> is an IncidenceGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di-I_Incidence
+  depends_on:
+  - check
+
+- name: <Di, NoProp, int> OutEdgeRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Di-I_OEListBidi
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, int> exists
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi-I_Exist
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, int> is DefaultInitializable
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi-I_DefInit
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, int> is Copyable
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi-I_Copyable
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, int> is a Graph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi-I_Graph
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, int> is a VertexListGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi-I_VList
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, int> VertexRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi-I_VListBidi
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, int> is an EdgeListGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi-I_EList
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, int> EdgeRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi-I_EListBidi
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, int> getIndex exists
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi-I_getIndex
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, int> is a MutableGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi-I_Mutable
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, int> is an IncidenceGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi-I_Incidence
+  depends_on:
+  - check
+
+- name: <Bi, NoProp, int> OutEdgeRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_Bi-I_OEListBidi
+  depends_on:
+  - check
+
+- name: <Di, int, NoProp> exists
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiI-_Exist
+  depends_on:
+  - check
+
+- name: <Di, int, NoProp> is DefaultInitializable
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiI-_DefInit
+  depends_on:
+  - check
+
+- name: <Di, int, NoProp> is Copyable
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiI-_Copyable
+  depends_on:
+  - check
+
+- name: <Di, int, NoProp> is a Graph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiI-_Graph
+  depends_on:
+  - check
+
+- name: <Di, int, NoProp> is a VertexListGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiI-_VList
+  depends_on:
+  - check
+
+- name: <Di, int, NoProp> VertexRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiI-_VListBidi
+  depends_on:
+  - check
+
+- name: <Di, int, NoProp> is an EdgeListGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiI-_EList
+  depends_on:
+  - check
+
+- name: <Di, int, NoProp> EdgeRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiI-_EListBidi
+  depends_on:
+  - check
+
+- name: <Di, int, NoProp> getIndex exists
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiI-_getIndex
+  depends_on:
+  - check
+
+- name: <Di, int, NoProp> is a MutableGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiI-_Mutable
+  depends_on:
+  - check
+
+- name: <Di, int, NoProp> is an IncidenceGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiI-_Incidence
+  depends_on:
+  - check
+
+- name: <Di, int, NoProp> OutEdgeRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiI-_OEListBidi
+  depends_on:
+  - check
+
+- name: <Bi, int, NoProp> exists
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiI-_Exist
+  depends_on:
+  - check
+
+- name: <Bi, int, NoProp> is DefaultInitializable
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiI-_DefInit
+  depends_on:
+  - check
+
+- name: <Bi, int, NoProp> is Copyable
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiI-_Copyable
+  depends_on:
+  - check
+
+- name: <Bi, int, NoProp> is a Graph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiI-_Graph
+  depends_on:
+  - check
+
+- name: <Bi, int, NoProp> is a VertexListGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiI-_VList
+  depends_on:
+  - check
+
+- name: <Bi, int, NoProp> VertexRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiI-_VListBidi
+  depends_on:
+  - check
+
+- name: <Bi, int, NoProp> is an EdgeListGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiI-_EList
+  depends_on:
+  - check
+
+- name: <Bi, int, NoProp> EdgeRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiI-_EListBidi
+  depends_on:
+  - check
+
+- name: <Bi, int, NoProp> getIndex exists
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiI-_getIndex
+  depends_on:
+  - check
+
+- name: <Bi, int, NoProp> is a MutableGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiI-_Mutable
+  depends_on:
+  - check
+
+- name: <Bi, int, NoProp> is an IncidenceGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiI-_Incidence
+  depends_on:
+  - check
+
+- name: <Bi, int, NoProp> OutEdgeRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiI-_OEListBidi
+  depends_on:
+  - check
+
+- name: <Di, int, int> exists
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiII_Exist
+  depends_on:
+  - check
+
+- name: <Di, int, int> is DefaultInitializable
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiII_DefInit
+  depends_on:
+  - check
+
+- name: <Di, int, int> is Copyable
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiII_Copyable
+  depends_on:
+  - check
+
+- name: <Di, int, int> is a Graph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiII_Graph
+  depends_on:
+  - check
+
+- name: <Di, int, int> is a VertexListGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiII_VList
+  depends_on:
+  - check
+
+- name: <Di, int, int> VertexRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiII_VListBidi
+  depends_on:
+  - check
+
+- name: <Di, int, int> is an EdgeListGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiII_EList
+  depends_on:
+  - check
+
+- name: <Di, int, int> EdgeRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiII_EListBidi
+  depends_on:
+  - check
+
+- name: <Di, int, int> getIndex exists
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiII_getIndex
+  depends_on:
+  - check
+
+- name: <Di, int, int> is a MutableGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiII_Mutable
+  depends_on:
+  - check
+
+- name: <Di, int, int> is an IncidenceGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiII_Incidence
+  depends_on:
+  - check
+
+- name: <Di, int, int> OutEdgeRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiII_OEListBidi
+  depends_on:
+  - check
+
+- name: <Di, int, int> is a PropertyGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiII_Prop
+  depends_on:
+  - check
+
+- name: <Di, int, int> is a MutablePropertyGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_DiII_MutProp
+  depends_on:
+  - check
+
+- name: <Bi, int, int> exists
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiII_Exist
+  depends_on:
+  - check
+
+- name: <Bi, int, int> is DefaultInitializable
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiII_DefInit
+  depends_on:
+  - check
+
+- name: <Bi, int, int> is Copyable
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiII_Copyable
+  depends_on:
+  - check
+
+- name: <Bi, int, int> is a Graph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiII_Graph
+  depends_on:
+  - check
+
+- name: <Bi, int, int> is a VertexListGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiII_VList
+  depends_on:
+  - check
+
+- name: <Bi, int, int> VertexRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiII_VListBidi
+  depends_on:
+  - check
+
+- name: <Bi, int, int> is an EdgeListGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiII_EList
+  depends_on:
+  - check
+
+- name: <Bi, int, int> EdgeRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiII_EListBidi
+  depends_on:
+  - check
+
+- name: <Bi, int, int> getIndex exists
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiII_getIndex
+  depends_on:
+  - check
+
+- name: <Bi, int, int> is a MutableGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiII_Mutable
+  depends_on:
+  - check
+
+- name: <Bi, int, int> is an IncidenceGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiII_Incidence
+  depends_on:
+  - check
+
+- name: <Bi, int, int> OutEdgeRange::iterator is bidirectional
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiII_OEListBidi
+  depends_on:
+  - check
+
+- name: <Bi, int, int> is a PropertyGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiII_Prop
+  depends_on:
+  - check
+
+- name: <Bi, int, int> is a MutablePropertyGraph
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_adjlist.py AL_BiII_MutProp
+  depends_on:
+  - check
+
+---
+kind: pipeline
+name: Final, Task 2
+
+clone:
+  disable: true
+
+steps:
+- name: clone
+  image: localhost:5000/plugins/git-user
+
+- name: check
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/check.py
+  depends_on:
+  - clone
+
+- name: Check double include of header src/graph/traits.hpp
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_dfsTopo.py hpp_traits
+  depends_on:
+  - check
+
+- name: Check double include of header src/graph/adjacency_matrix.hpp
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_dfsTopo.py hpp_adjacency_matrix
+  depends_on:
+  - check
+
+- name: Check double include of header src/graph/tags.hpp
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_dfsTopo.py hpp_tags
+  depends_on:
+  - check
+
+- name: Check double include of header src/graph/concepts.hpp
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_dfsTopo.py hpp_concepts
+  depends_on:
+  - check
+
+- name: Check double include of header src/graph/depth_first_search.hpp
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_dfsTopo.py hpp_depth_first_search
+  depends_on:
+  - check
+
+- name: Check double include of header src/graph/properties.hpp
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_dfsTopo.py hpp_properties
+  depends_on:
+  - check
+
+- name: Check double include of header src/graph/topological_sort.hpp
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_dfsTopo.py hpp_topological_sort
+  depends_on:
+  - check
+
+- name: Check double include of header src/graph/io.hpp
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_dfsTopo.py hpp_io
+  depends_on:
+  - check
+
+- name: Check running of DFS with our own null visitor
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_dfsTopo.py runDFSMyNull
+  depends_on:
+  - check
+
+- name: Check running of DFS with the library null visitor
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_dfsTopo.py runDFSNull
+  depends_on:
+  - check
+
+- name: Check DFS iteration order
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_dfsTopo.py runDFSLog
+  depends_on:
+  - check
+
+- name: Check running of topological sort with back_inserter as storage
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_dfsTopo.py runTopoVector
+  depends_on:
+  - check
+
+- name: Check running of topological sort with an array as storage
+  image: localhost:5000/dm852
+  commands:
+  - python3 /dm852/test_F_dfsTopo.py runTopoArray
+  depends_on:
+  - check

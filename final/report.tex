@@ -1,0 +1,139 @@
+\documentclass[a4paper,12pt]{report}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{parskip}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xspace}
+\usepackage{subfiles}
+
+% Algorithms
+%\usepackage{algorithm}
+%\usepackage[noend]{algorithmic}
+\usepackage{color}
+\usepackage{listings}
+\definecolor{mygray}{rgb}{0.4,0.4,0.4}
+\definecolor{mygreen}{rgb}{1,0.8,0.6}
+\definecolor{myorange}{rgb}{1.0,0.4,0}
+\definecolor{darkpink}{rgb}{0.91, 0.33, 0.5}
+\definecolor{warmyelloworange}{rgb}{0.8, 0.6, 0.2}
+\lstset{
+language=c++,
+basicstyle=\footnotesize\sffamily\color{black},
+commentstyle=\color{mygray},
+frame=single,
+numbers=left,
+numbersep=5pt,
+numberstyle=\tiny\color{mygray},
+keywordstyle=\color{warmyelloworange},
+showspaces=false,
+showstringspaces=false,
+stringstyle=\color{myorange},
+tabsize=2,
+breaklines=true,
+captionpos=b
+}
+% Tabular
+%\usepackage{multirow}
+%\usepackage{rotating}
+
+% Figures
+%\usepackage{epic,eepic}
+
+% Consider periods after theorems and "Proof" and consider not forcing Roman.
+% Theorems
+\newtheorem{xdefinition}{Definition}
+\newtheorem{xobservation}{Observation}
+\newtheorem{xtheorem}{Theorem}
+\newtheorem{xlemma}{Lemma}
+\newtheorem{xproposition}{Proposition}
+\newtheorem{xcorollary}{Corollary}
+\newenvironment{definition}{\begin{xdefinition}\rm}%
+{\hspace*{\fill}\raisebox{-1pt}{\boldmath$\Box$}\end{xdefinition}}
+\newenvironment{observation}{\begin{xobservation}\rm}%
+{\hspace*{\fill}\raisebox{-1pt}{\boldmath$\Box$}\end{xobservation}}
+\newenvironment{theorem}{\begin{xtheorem}\rm}{\end{xtheorem}}
+\newenvironment{lemma}{\begin{xlemma}\rm}{\end{xlemma}}
+\newenvironment{proposition}{\begin{xproposition}\rm}{\end{xproposition}}
+\newenvironment{corollary}{\begin{xcorollary}\rm}{\end{xcorollary}}
+\newenvironment{proof}{\begin{trivlist}\item[]{\bf Proof }}%
+{\hspace*{\fill}\raisebox{-1pt}{\boldmath$\Box$}\end{trivlist}}
+
+% Example commands
+\newcommand{\OPT}{\ensuremath{\operatorname{\textsc{Opt}}}\xspace}
+\newcommand{\MIN}[1]{\min\left\{#1\right\}}
+\newcommand{\CEIL}[1]{\left\lceil#1\right\rceil}
+\newcommand{\FLOOR}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\SIZE}[1]{|#1|}
+\newcommand{\SET}[1]{\left\{#1\right\}}
+\newcommand{\SETOF}[2]{\SET{#1 \mid #2}}
+\newcommand{\BIGSET}[1]{\left\{#1\right\}}
+\newcommand{\BIGSETOF}[2]{\BIGSET{#1 \mid #2}}
+\newcommand{\NAT}{\ensuremath{\mathbb{N}}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+		
+\begin{titlepage}
+
+\center % Center everything on the page
+
+\textsc{\large Introduction to Generic Programming}\\[0.5cm]
+
+\HRule\\[0.4cm]
+
+{\huge\bfseries Generic Graph Library}\\[0.4cm]
+
+\HRule\\[1.5cm]
+
+\begin{minipage}{0.47\textwidth}
+        \begin{flushleft}
+                \large
+                \textit{Author}\\
+                William Juhl \\ 
+                wijuh20@student.sdu.dk
+        \end{flushleft}
+\end{minipage}
+\vfill\vfill
+
+{\large June 18, 2023} % At the very end, insert date for turning in, but leave it like this during the advising
+
+\vfill\vfill
+\includegraphics[width=0.4\textwidth]{SDU_BLACK_RGB.png}\\[1cm]
+
+\vfill
+
+\end{titlepage}
+
+\pagenumbering{roman} 
+
+
+\newpage
+\tableofcontents
+
+\newpage
+\pagenumbering{arabic} 
+\setcounter{page}{1}
+
+\chapter{Introduction}
+\subfile{chapters/introduction.tex}
+
+\chapter{Design}
+\subfile{chapters/design.tex}
+
+\chapter{Implementation}
+\subfile{chapters/implementation.tex}
+
+\chapter{Topological Sort}
+\subfile{chapters/topo.tex}
+
+\chapter{Conclusion}
+\subfile{chapters/conclusion.tex}
+
+\end{document}

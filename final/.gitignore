@@ -1,0 +1,6 @@
+build
+.vscode
+meson.build
+src/main.cpp
+report
+.cache/
